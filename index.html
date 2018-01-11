@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>realtime chatting app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+  <div class = "container">
+    <h3>socket.io chat example</h3>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="msgForm">Message: </label>
+        <input type="text" class="form-control" id="msgForm">
+      </div>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+
+    <div id="chatLogs"></div>
+  </div>
+  <script>
+    $(function() {
+      var socket = io();
+
+      socket.emit("login", {
+        name: makeRandomName(),
+        userid: "username@username.username"
+      });
+
+      socket.on("login", function(data) {
+        $("#chatLogs").append("<div><strong>" + data + "</strong> has joined</div>");
+      });
+
+      socket.
+    });
+    
+  </script>
+
+</body>
+
+</html>
