@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div class = "container">
+  <div class="container">
     <h3>socket.io chat example</h3>
     <form class="form-inline">
       <div class="form-group">
@@ -25,7 +25,7 @@
     <div id="chatLogs"></div>
   </div>
   <script>
-    $(function() {
+    $(function () {
       var socket = io();
 
       socket.emit("login", {
@@ -33,13 +33,33 @@
         userid: "username@username.username"
       });
 
-      socket.on("login", function(data) {
+      socket.on("login", function (data) {
         $("#chatLogs").append("<div><strong>" + data + "</strong> has joined</div>");
       });
 
-      socket.
+      socket.on("chat", function (data) {
+        $("#chatLogs").append("<div>" + data.msg + " : from <strong>: " + data.from.name + "</string></div>");
+      });
+
+      $("form").submit(function (e) {
+        e.preventDefault();
+        var $msgForm = $("#msgForm");
+
+        socket.emit("chat", {
+          msg: $msgForm.val()
+        });
+        $msgForm.val("");
+      });
+
+      function makeRandomName() {
+        var name = "";
+        var possible = "abcdefghijklmnopqrstuvwxyz";
+        for (var i = 0; i < 3; i++) {
+          name += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        return name;
+      }
     });
-    
   </script>
 
 </body>
