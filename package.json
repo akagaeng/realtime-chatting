@@ -1,24 +1,25 @@
 {
   "name": "realtime-chatting",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "realtime chatting app using socket.io",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "chat": "node app.js",
+    "chat-room": "node app-room.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akagaeng/realtime-chatting.git"
   },
-  "author": "",
+  "author": "akagaeng<akagaeng@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/akagaeng/realtime-chatting/issues"
   },
   "homepage": "https://github.com/akagaeng/realtime-chatting#readme",
   "dependencies": {
-    "express": "4.16.2",
-    "socket.io": "2.0.4"
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
   },
   "devDependencies": {}
 }
